@@ -6,7 +6,7 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur border-b border-white/10">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="font-semibold tracking-tight">Mariam Tech</Link>
+        <Link href="/" className="font-semibold tracking-tight">Maryam Tech</Link>
         <nav className="hidden md:flex gap-6">
           <Link href="/ai-services">AI Services</Link>
           <Link href="/websites-apps">Websites & Apps</Link>

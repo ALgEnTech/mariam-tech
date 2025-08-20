@@ -1,4 +1,4 @@
-# SSOT — Mariam Tech
+# SSOT — Maryam Tech
 
 Hero: AI Assistants & Lightning-Fast Websites
 Primary CTA: https://calendly.com/kevtechwin/30min

@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 
 export const metadata: Metadata = {
-  title: "Mariam Tech — AI Assistants & Lightning-Fast Websites",
+  title: "Maryam Tech — AI Assistants & Lightning-Fast Websites",
   description: "Practical AI + fast, accessible websites. Book a 15-min plan call.",
 };
 
