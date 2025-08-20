@@ -35,3 +35,14 @@
 - Created placeholder pages for AI Policy, Accessibility, and Privacy so footer links don’t break
 - Verified all navigation works locally and deployed to Vercel
 - Next: Build Contact page with form + Calendly embed (Day 5)
+
+## Day 5 — Contact Page + Forms (2025-08-20)
+
+- Built **Contact page** with a clean form (name, email, message).
+- Integrated **Formspree** for submissions.
+- Added **plan pre-fill** (Starter / Growth / Enterprise) via query params.
+- Handled **loading spinner, error states, and success confirmation**.
+- Embedded **Calendly booking iframe** below the form.
+- Tested locally: ✅ working with success + failure states.
+
+**DoD:** Users can fill the form, submit to Formspree, see success/error states, and directly book calls via Calendly.
