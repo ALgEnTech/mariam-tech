@@ -18,40 +18,6 @@ export default function Home() {
         {HERO_LINE}
       </motion.h1>
 
-      {/* Bento Grid */}
-<section className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-  <div className="p-6 rounded-2xl bg-white/5 shadow-soft">
-    <h2 className="text-xl font-bold">Everyday Agents</h2>
-    <p className="mt-2 text-muted">AI assistants that capture leads, answer FAQs, and save time.</p>
-  </div>
-
-  <div className="p-6 rounded-2xl bg-white/5 shadow-soft">
-    <h2 className="text-xl font-bold">Modern Webworks</h2>
-    <p className="mt-2 text-muted">Fast, mobile-friendly websites that pass Core Web Vitals.</p>
-  </div>
-
-  <div className="p-6 rounded-2xl bg-white/5 shadow-soft">
-    <h2 className="text-xl font-bold">TenX AI Academy</h2>
-    <p className="mt-2 text-muted">Workshops to help your team finish tasks 10× faster.</p>
-  </div>
-
-  <div className="p-6 rounded-2xl bg-white/5 shadow-soft">
-    <h2 className="text-xl font-bold">Everkind Voices</h2>
-    <p className="mt-2 text-muted">Legacy avatars that preserve stories and voices.</p>
-  </div>
-
-  <div className="p-6 rounded-2xl bg-white/5 shadow-soft">
-    <h2 className="text-xl font-bold">Maryam Build</h2>
-    <p className="mt-2 text-muted">Quick MVP sprints for apps and tools.</p>
-  </div>
-
-  <div className="p-6 rounded-2xl bg-white/5 shadow-soft">
-    <h2 className="text-xl font-bold">PlayCell Studio</h2>
-    <p className="mt-2 text-muted">Mini-games for campaigns and promotions.</p>
-  </div>
-</section>
-
-
       {/* Subtext */}
       <p className="mt-6 text-lg md:text-xl max-w-2xl text-muted">
         Practical AI services and lightning-fast websites.  
@@ -73,6 +39,39 @@ export default function Home() {
           See Pricing
         </a>
       </div>
+
+      {/* Bento Grid */}
+      <section className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="p-6 rounded-2xl bg-white/5 shadow-soft hover:bg-white/10 transition">
+          <h2 className="text-xl font-bold">Everyday Agents</h2>
+          <p className="mt-2 text-muted">AI assistants that capture leads, answer FAQs, and save time.</p>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-white/5 shadow-soft hover:bg-white/10 transition">
+          <h2 className="text-xl font-bold">Modern Webworks</h2>
+          <p className="mt-2 text-muted">Fast, mobile-friendly websites that pass Core Web Vitals.</p>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-white/5 shadow-soft hover:bg-white/10 transition">
+          <h2 className="text-xl font-bold">TenX AI Academy</h2>
+          <p className="mt-2 text-muted">Workshops to help your team finish tasks 10× faster.</p>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-white/5 shadow-soft hover:bg-white/10 transition">
+          <h2 className="text-xl font-bold">Everkind Voices</h2>
+          <p className="mt-2 text-muted">Legacy avatars that preserve stories and voices.</p>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-white/5 shadow-soft hover:bg-white/10 transition">
+          <h2 className="text-xl font-bold">Maryam Build</h2>
+          <p className="mt-2 text-muted">Quick MVP sprints for apps and tools.</p>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-white/5 shadow-soft hover:bg-white/10 transition">
+          <h2 className="text-xl font-bold">PlayCell Studio</h2>
+          <p className="mt-2 text-muted">Mini-games for campaigns and promotions.</p>
+        </div>
+      </section>
     </section>
   );
 }
