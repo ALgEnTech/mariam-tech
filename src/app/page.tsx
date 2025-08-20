@@ -1,18 +1,61 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { HERO_LINE, CALENDLY_URL } from "@/lib/constants";
 
 export default function Home() {
   return (
     <section className="relative flex flex-col items-center justify-center text-center py-32 px-6 
                         bg-gradient-to-b from-bg via-bg to-black/40 rounded-2xl shadow-soft">
+
       {/* Hero Heading */}
-      <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight max-w-3xl">
+      <motion.h1
+        className="text-4xl md:text-6xl font-extrabold tracking-tight max-w-3xl"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         {HERO_LINE}
-      </h1>
+      </motion.h1>
+
+      {/* Bento Grid */}
+<section className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+  <div className="p-6 rounded-2xl bg-white/5 shadow-soft">
+    <h2 className="text-xl font-bold">Everyday Agents</h2>
+    <p className="mt-2 text-muted">AI assistants that capture leads, answer FAQs, and save time.</p>
+  </div>
+
+  <div className="p-6 rounded-2xl bg-white/5 shadow-soft">
+    <h2 className="text-xl font-bold">Modern Webworks</h2>
+    <p className="mt-2 text-muted">Fast, mobile-friendly websites that pass Core Web Vitals.</p>
+  </div>
+
+  <div className="p-6 rounded-2xl bg-white/5 shadow-soft">
+    <h2 className="text-xl font-bold">TenX AI Academy</h2>
+    <p className="mt-2 text-muted">Workshops to help your team finish tasks 10× faster.</p>
+  </div>
+
+  <div className="p-6 rounded-2xl bg-white/5 shadow-soft">
+    <h2 className="text-xl font-bold">Everkind Voices</h2>
+    <p className="mt-2 text-muted">Legacy avatars that preserve stories and voices.</p>
+  </div>
+
+  <div className="p-6 rounded-2xl bg-white/5 shadow-soft">
+    <h2 className="text-xl font-bold">Maryam Build</h2>
+    <p className="mt-2 text-muted">Quick MVP sprints for apps and tools.</p>
+  </div>
+
+  <div className="p-6 rounded-2xl bg-white/5 shadow-soft">
+    <h2 className="text-xl font-bold">PlayCell Studio</h2>
+    <p className="mt-2 text-muted">Mini-games for campaigns and promotions.</p>
+  </div>
+</section>
+
 
       {/* Subtext */}
       <p className="mt-6 text-lg md:text-xl max-w-2xl text-muted">
         Practical AI services and lightning-fast websites.  
-        Book a 15-min plan call to see how Mariam Tech can help your business grow.
+        Book a 15-min plan call to see how Maryam Tech can help your business grow.
       </p>
 
       {/* CTA Buttons */}
