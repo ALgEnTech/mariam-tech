@@ -26,3 +26,12 @@
 - Polished footer layout with responsive alignment + hover states
 - Verified design consistency and deployed changes to Vercel
 - Next: Case Study section with before/after visuals and first Pricing page draft
+
+## Day 4
+
+- Built Pricing page with 3 clear tiers (Starter, Growth, Enterprise)
+- Highlighted Growth plan visually to attract attention
+- Added global Footer with links (AI Policy, Accessibility, Privacy)
+- Created placeholder pages for AI Policy, Accessibility, and Privacy so footer links don’t break
+- Verified all navigation works locally and deployed to Vercel
+- Next: Build Contact page with form + Calendly embed (Day 5)
