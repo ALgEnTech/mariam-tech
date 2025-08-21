@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { CALENDLY_URL } from "@/lib/constants";
 import confetti from "canvas-confetti";
 
-export default function ContactPage() {
+function ContactContent() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -152,5 +152,13 @@ export default function ContactPage() {
         />
       </div>
     </section>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<p className="text-center">Loading...</p>}>
+      <ContactContent />
+    </Suspense>
   );
 }
