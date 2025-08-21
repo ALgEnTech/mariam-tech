@@ -20,3 +20,19 @@
 
 - Stripe checkout for starter packages (optional, after pilot phase).
 - Airtable or Notion API to collect form submissions for CRM sync.
+
+## Visual Polish / Next
+
+- Add subtle “electric spark” outline animation variant for `.cta-primary` (on long hover).
+- Replace placeholder proof badges with live counters fed from a CMS (optional).
+- Case Studies: add tiny bar charts/sparklines for metrics (e.g., response time, signups).
+
+## Content
+
+- Add one “industry explainer” case study (Dental or Law) with a 30-sec loom embed.
+- Collect 2 real client logo SVGs (swap placeholders) and ensure width/height attributes.
+
+## Tech
+
+- Build a `Button` component wrapper that maps to `.cta-primary` / secondary variants.
+- Create a `MetricsPill` component so badges stay consistent across the site.

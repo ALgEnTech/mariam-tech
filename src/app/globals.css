@@ -57,16 +57,23 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-fill-color: transparent;
 }
 
-/* Links */
+/* ---------------------------------------------------
+   Links (disable global recolor on hover)
+--------------------------------------------------- */
 a {
   color: inherit;
   transition: color 0.2s ease;
 }
 a:hover {
-  color: var(--accent);
+  color: inherit; /* was var(--accent) — this caused the violet-on-hover issue */
 }
 
-/* Buttons */
+/* Optional: a “linky” style for text links (not buttons)
+.link:hover { color: var(--accent); } */
+
+/* ---------------------------------------------------
+   Buttons (no forced color change)
+--------------------------------------------------- */
 button, .btn {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -75,7 +82,9 @@ button:hover, .btn:hover {
   box-shadow: 0 6px 22px rgba(106, 79, 203, 0.35);
 }
 
-/* Inputs & Forms */
+/* ---------------------------------------------------
+   Form Elements
+--------------------------------------------------- */
 input, textarea, select {
   outline: none;
   border-radius: 0.5rem;
@@ -96,39 +105,6 @@ input:focus, textarea:focus, select:focus {
 /* ---------------------------------------------------
    Animations
 --------------------------------------------------- */
-@keyframes floaty {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
-}
-.floaty {
-  animation: floaty 4s ease-in-out infinite;
-}
-
-/* ---------------------------------------------------
-   Scrollbar Styling
---------------------------------------------------- */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 9999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
-}
-
-/* ---------------------------------------------------
-   Selection Color
---------------------------------------------------- */
-::selection {
-  background: var(--accent);
-  color: white;
-}
 /* Floating + tilt + breathing pulse */
 @keyframes floaty {
   0%   { transform: translateY(0) scale(1) rotate(0deg); }
@@ -137,11 +113,7 @@ input:focus, textarea:focus, select:focus {
   75%  { transform: translateY(-10px) scale(1.03) rotate(2deg); }
   100% { transform: translateY(0) scale(1) rotate(0deg); }
 }
-
-.floaty {
-  animation: floaty 3.5s ease-in-out infinite;
-  will-change: transform;
-}
+.floaty { animation: floaty 3.5s ease-in-out infinite; will-change: transform; }
 
 /* Soft pulsing glow */
 @keyframes glow {
@@ -154,22 +126,63 @@ input:focus, textarea:focus, select:focus {
             drop-shadow(0 0 20px rgba(106, 79, 203, 0.7));
   }
 }
+.glowy { animation: glow 3s ease-in-out infinite; }
 
-.glowy {
-  animation: glow 3s ease-in-out infinite;
-}
 /* Particle float animation */
 @keyframes particleFloat {
   0% { transform: translateY(0) translateX(0); opacity: 0.4; }
   50% { transform: translateY(-40px) translateX(20px); opacity: 0.8; }
   100% { transform: translateY(-80px) translateX(-20px); opacity: 0.2; }
 }
-
 .particle {
   position: absolute;
   border-radius: 9999px;
-  background: rgba(106, 79, 203, 0.6); /* brand accent glow */
+  background: rgba(106, 79, 203, 0.6);
   box-shadow: 0 0 8px rgba(106, 79, 203, 0.8);
   animation: particleFloat 12s ease-in-out infinite;
   pointer-events: none;
 }
+
+/* ---------------------------------------------------
+   Scrollbar Styling
+--------------------------------------------------- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ---------------------------------------------------
+   Selection Color
+--------------------------------------------------- */
+::selection { background: var(--accent); color: white; }
+
+/* ---------------------------------------------------
+   Components: CTAs that never change text color on hover
+--------------------------------------------------- */
+.cta-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem; /* 2xl */
+  padding: 1.5rem 3rem; /* px-12 py-6 */
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600;
+  color: #fff !important; /* lock text color */
+  background-image: linear-gradient(to right, #6366f1, #8b5cf6, #ec4899); /* indigo→purple→pink */
+  box-shadow: 0 10px 24px rgba(139, 92, 246, 0.35);
+  transition: transform 200ms ease, box-shadow 200ms ease, filter 200ms ease;
+}
+.cta-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 40px rgba(139, 92, 246, 0.55);
+  color: #fff !important; /* belt & suspenders */
+  filter: drop-shadow(0 0 16px rgba(167,139,250,0.55));
+}
+.cta-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(34,211,238,0.35); /* cyan focus ring */
+}
+
+/* Helper: ensure no color change on hover for any element that uses this */
+.no-color-hover:hover { color: inherit !important; }

@@ -135,3 +135,13 @@
 - Begin preparing documentation updates for README.
 
 ---
+
+## Day 10 — CTA & Motion Polish (2025-08-21)
+
+- Fixed global hover color bug (CTA/link text turning violet) by overriding `a:hover` to inherit and adding `.cta-primary` with locked white text.
+- Implemented reusable gradient CTA with pop + glow (no color change). Applied in hero and case studies CTA.
+- Cleaned service card hover: lift, soft shadow, icon micro-wobble; removed blur; added proof badges.
+- Tightened vertical spacing between hero chips, services grid, and case studies; centered case studies.
+- Refreshed case studies layout: Before/After pills, outcome metric, and testimonial quote.
+- Kept secondary CTAs white with `.no-color-hover` helper.
+- Verified accessibility (contrast, focus ring) and motion smoothness on desktop + mobile.
