@@ -21,7 +21,7 @@ export default function Home() {
           className="mb-12"
         >
           <Image
-            src="/logo.svg"
+            src="/logo_3.svg"
             alt="Maryam Tech"
             width={120}
             height={120}

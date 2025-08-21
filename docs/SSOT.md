@@ -1,21 +1,31 @@
-# SSOT — Maryam Tech (Deltas)
+📖 SSOT.md (Single Source of Truth)
 
-Hero:
+Brand Voice:
 
-- Primary CTA uses `.cta-primary` (gradient bg, white text locked, glow+pop on hover).
-- Standards chips (under hero): 🔒 Secure by Design · 🌍 SEO & Google-Friendly · 🚀 Results-Driven · 🔧 Easy to Manage.
+Professional, premium, AI-first.
 
-Services:
+No hyphens in visible text. Use slash, comma, or clean phrasing.
 
-- Each card includes a proof badge (e.g., ⭐ 100+ Clients, 🚀 3× Faster).
-- Hover: gentle lift + shadow, icon wobble; **no blur**.
+Pages Done:
 
-Case Studies:
+Home Hero – animated gradient + motion headline.
 
-- Structure: Title → Before/After pills → Key metric (e.g., 90% Faster Responses) → Testimonial.
-- Section centered with tighter vertical rhythm; bottom CTA uses `.cta-primary`.
+AI Sales Page – complete, PDF-ready copy.
 
-Global:
+Websites & Apps – interactive card carousel, emerald gradient, centered CTAs.
 
-- Removed global violet link recolor on hover (`a:hover` now `inherit`).
-- Introduced helpers: `.cta-primary`, `.no-color-hover`.
+10X AI Academy – persona-based, professional modules.
+
+CTA Tokens:
+
+Primary CTA: Book a Strategy Call → Calendly.
+
+Secondary CTA: Explore Pricing.
+
+Design Tokens:
+
+Gradients: Emerald, violet, cyan (warm premium).
+
+Text: White on dark, with careful contrast.
+
+Components: Cards, sliders, motion transitions, glassmorphism panels.

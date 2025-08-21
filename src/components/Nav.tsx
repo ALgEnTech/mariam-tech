@@ -4,9 +4,10 @@ import { useState, useEffect, useContext, useRef } from "react";
 import Image from "next/image";
 import { CALENDLY_URL } from "@/lib/constants";
 import { motion, AnimatePresence } from "framer-motion";
-import { TransitionContext } from "@/components/TransitionProvider"; // ✅ global context
-
+import { TransitionContext } from "@/components/TransitionProvider"; 
 import { Orbitron } from "next/font/google";
+import { usePathname } from "next/navigation"; // ✅ hydration-safe
+
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["600", "700"] });
 
 // Tiny particle used for title discharge + hover sparks
@@ -40,6 +41,7 @@ export default function Nav() {
   const brandRef = useRef<HTMLButtonElement>(null);
 
   const transitionCtx = useContext(TransitionContext);
+  const pathname = usePathname(); // ✅ hydration-safe
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -133,7 +135,7 @@ export default function Nav() {
               <button
                 onClick={() => transitionCtx?.startTransition(href, getLogoOrigin())}
                 className={`relative text-white/80 hover:text-white transition-colors duration-300 ${
-                  typeof window !== "undefined" && window.location.pathname === href ? "text-white" : ""
+                  pathname === href ? "text-white" : ""
                 }`}
               >
                 {label}
@@ -164,13 +166,15 @@ export default function Nav() {
             </motion.div>
           ))}
 
-          {/* CTA (kept as real <a> since it’s external) */}
+          {/* CTA */}
           <motion.a
             href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.1, boxShadow: "0px 0px 25px rgba(106,79,203,0.9)" }}
-            className="ml-6 relative rounded-xl px-5 py-2.5 font-semibold text-brand-900 bg-white/90 backdrop-blur-lg border border-brand-200/40 overflow-hidden"
+            whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px rgba(168,85,247,0.8)" }}
+            className="ml-6 relative rounded-xl px-5 py-2.5 font-semibold 
+             text-white bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 
+             shadow-lg transition"
           >
             🚀 Book a 15-min Call
           </motion.a>
@@ -224,7 +228,7 @@ export default function Nav() {
                       transitionCtx?.startTransition(href, getLogoOrigin());
                     }}
                     className={`block text-lg relative text-white/90 hover:text-white ${
-                      typeof window !== "undefined" && window.location.pathname === href ? "text-white" : ""
+                      pathname === href ? "text-white" : ""
                     }`}
                   >
                     {label}
@@ -232,7 +236,7 @@ export default function Nav() {
                 </motion.div>
               ))}
 
-              {/* CTA (external, keep <a>) */}
+              {/* CTA */}
               <motion.a
                 href={CALENDLY_URL}
                 target="_blank"
