@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mariam Tech — AI-First Studio Website
 
-## Getting Started
+Practical AI + Modern Web, delivered fast and responsibly.  
+This is the official website for Mariam Tech, built with **Next.js 15, TailwindCSS, TypeScript, and Framer Motion**.
 
-First, run the development server:
+---
+
+## 🌐 Live Site
+
+Deployed via Vercel: [Preview Link](https://your-vercel-preview.vercel.app)
+
+---
+
+## ✨ Features
+
+- **AI-first branding** — clear hero, service lines, outcome-driven messaging.
+- **Case Studies** — before/after snapshots with testimonials.
+- **Pricing page** — transparent Starter / Growth / Enterprise plans.
+- **Contact page** — Formspree integration + Calendly embed.
+- **Accessibility** — WCAG 2.2 AA contrast & keyboard navigation.
+- **Performance** — Core Web Vitals optimized.
+- **Compliance pages** — AI Policy, Accessibility, Privacy.
+
+---
+
+## 🛠 Tech Stack
+
+- [Next.js 15](https://nextjs.org/) (App Router)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- Google Fonts (Manrope, Inter)
+- [Vercel](https://vercel.com/) hosting
+
+---
+
+## 📂 Project Structure
+
+/src/app
+/ai-services
+/about
+/case-studies
+/contact
+/pricing
+/ai-policy
+/accessibility
+/privacy
+/components
+/docs
+SSOT.md
+LOG.md
+BUGS.md
+PARKING_LOT.md
+/public
+favicon.ico
+og-image.png
+
+---
+
+## 🚀 Getting Started
 
 ```bash
+# Install dependencies
+npm install
+
+# Run dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build production
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+✅ Launch Checklist
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All pages deployed to Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Footer links (AI Policy, Accessibility, Privacy) resolve
 
-## Learn More
+Metadata & OG image appear on LinkedIn/Twitter share
 
-To learn more about Next.js, take a look at the following resources:
+Contact form submits via Formspree
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Calendly embed loads correctly
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Case Studies page shows placeholder outcomes
 
-## Deploy on Vercel
+No console errors, no broken links
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+LCP ≤2.5s, CLS ≤0.1 on mobile
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+WCAG AA color contrast verified
+
+---
+
+## 📑 Day 10 Log (LOG.md entry)
+
+```md
+## Day 10 — Final Polish & Launch Prep (2025-08-22)
+
+- Added **README.md** with project overview, tech stack, and launch checklist.
+- Cleaned **BUGS.md**: closed resolved issues, left only active blockers.
+- Trimmed **PARKING_LOT.md**: kept future nice-to-haves, removed duplicates.
+- Ran through launch checklist:
+  - Metadata & OG previews working
+  - Footer links resolve
+  - Contact + Calendly functional
+  - Case Studies + About + Pricing pages verified
+  - No console errors
+- Ready for stakeholder review and launch demo.
+```

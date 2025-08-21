@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CALENDLY_URL } from "@/lib/constants";
+import confetti from "canvas-confetti";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -11,6 +12,32 @@ export default function ContactPage() {
 
   const searchParams = useSearchParams();
   const selectedPlan = searchParams.get("plan") || "";
+
+  // 🎈 Balloon spawner with varied sizes + animations
+  const spawnBalloons = () => {
+    const container = document.createElement("div");
+    container.className = "fixed inset-0 pointer-events-none overflow-hidden";
+    document.body.appendChild(container);
+
+    const colors = ["#6366F1", "#A78BFA", "#34D399", "#F472B6"];
+
+    for (let i = 0; i < 8; i++) {
+      const balloon = document.createElement("div");
+      const size = Math.random() * 20 + 20; // 20–40px
+      const anims = ["animate-float", "animate-float-slow", "animate-float-fast"];
+
+      balloon.className = `absolute bottom-[-100px] rounded-full opacity-90 ${
+        anims[Math.floor(Math.random() * anims.length)]
+      }`;
+      balloon.style.left = `${Math.random() * 100}%`;
+      balloon.style.width = `${size}px`;
+      balloon.style.height = `${size * 1.3}px`; // slightly oval
+      balloon.style.backgroundColor = colors[i % colors.length];
+      container.appendChild(balloon);
+    }
+
+    setTimeout(() => container.remove(), 7000);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,6 +55,17 @@ export default function ContactPage() {
 
       if (response.ok) {
         setSubmitted(true);
+
+        // 🎉 Confetti
+        confetti({
+          particleCount: 120,
+          spread: 80,
+          origin: { y: 0.6 },
+          colors: ["#6366F1", "#A78BFA", "#34D399", "#F472B6"],
+        });
+
+        // 🎈 Balloons
+        spawnBalloons();
       } else {
         const data = await response.json();
         setError(data.error || "Something went wrong.");
@@ -40,104 +78,77 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="py-20 max-w-4xl mx-auto px-6">
-      <h1 className="text-4xl font-bold text-center mb-4">Let’s Talk</h1>
+    <section className="py-24 px-6 max-w-3xl mx-auto">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-6">
+        Let’s Talk
+      </h1>
 
       {selectedPlan && (
-        <p className="text-center text-brand-600 font-medium mb-6">
-          🎉 Thanks for choosing the <strong>{selectedPlan}</strong> plan!
+        <p className="text-center text-indigo-500 font-medium mb-6">
+          🎉 You’ve selected the <strong>{selectedPlan}</strong> plan.  
           Fill out the form and we’ll get you started.
         </p>
       )}
 
-      <p className="text-center text-muted mb-12">
-        Have a project in mind? Tell us about it or book a call directly.
+      <p className="text-center text-gray-500 mb-12">
+        Tell us about your project — or book a call directly below.
       </p>
 
       {!submitted ? (
         <form
           onSubmit={handleSubmit}
-          className="bg-white/5 p-6 rounded-2xl shadow-soft space-y-4"
+          className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-gray-100 dark:border-neutral-800 p-8 space-y-6 transition-all"
         >
-          {/* Hidden field for plan */}
           <input type="hidden" name="plan" value={selectedPlan} />
 
           <input
             type="text"
             name="name"
-            placeholder="Your Name"
-            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none"
+            placeholder="🧑‍💼 Your Name"
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             required
           />
           <input
             type="email"
             name="email"
-            placeholder="Your Email"
-            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none"
+            placeholder="✉️ Your Email"
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             required
           />
           <textarea
             name="message"
-            placeholder="Your Message"
             rows={4}
-            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none"
+            placeholder="📝 Tell us about your project..."
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             required
           />
 
-          {error && (
-            <p className="text-red-400 text-sm text-center">{error}</p>
-          )}
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
           <button
             type="submit"
             disabled={loading}
-            className="flex items-center justify-center gap-2 w-full py-3 bg-brand-600 hover:bg-brand-700 rounded-lg font-semibold text-white disabled:opacity-50"
+            className="w-full py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 shadow-md hover:shadow-lg transition duration-300 disabled:opacity-50"
           >
-            {loading ? (
-              <>
-                <svg
-                  className="animate-spin h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                  ></path>
-                </svg>
-                Sending...
-              </>
-            ) : (
-              "Send Message"
-            )}
+            {loading ? "⏳ Sending..." : "📤 Send Message"}
           </button>
         </form>
       ) : (
-        <div className="text-center py-12 bg-white/5 rounded-2xl">
-          <p className="text-lg font-medium">
-            ✅ Thanks! We’ve received your details and will be in touch soon.
+        <div className="text-center py-12 bg-white dark:bg-neutral-900 rounded-2xl shadow-lg border border-gray-100 dark:border-neutral-800">
+          <p className="text-lg font-medium text-indigo-600 dark:text-indigo-400">
+            🤝 Thanks! We’ve received your message and will be in touch soon.
           </p>
         </div>
       )}
 
       {/* Calendly Embed */}
-      <div className="mt-16">
+      <div className="mt-16 bg-white dark:bg-neutral-900 border border-gray-100 dark:border-neutral-800 rounded-2xl shadow-xl">
         <iframe
           src={`${CALENDLY_URL}?hide_landing_page_details=1&hide_gdpr_banner=1`}
           width="100%"
-          height={650}
+          height={600}
           frameBorder={0}
-          className="rounded-2xl shadow-soft"
+          className="rounded-2xl"
         />
       </div>
     </section>

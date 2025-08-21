@@ -46,3 +46,63 @@
 - Tested locally: ✅ working with success + failure states.
 
 **DoD:** Users can fill the form, submit to Formspree, see success/error states, and directly book calls via Calendly.
+
+## Day 6 — Case Studies Page (2025-08-20)
+
+- Added **Case Studies page** at `/case-studies`.
+- Built **client logo bar** with 6 placeholder logos (grayscale → hover brighten).
+- Added **3 snapshot cards**:
+  - Dental Clinic: +20% booked consults, fewer missed calls.
+  - Immigration Law Firm: Docs-to-Bot cut replies 2 days → 2 hours.
+  - Senior Living Center: Core Web Vitals improved from “Poor” → “Good”.
+- Each card includes _Before/After_ + testimonial quote + author role.
+- Added bottom **CTA button** linking to Calendly.
+- Verified responsive layout, accessibility, and motion effects.
+- Deployed successfully to Vercel.
+
+**DoD:** Users can view outcome proof, testimonials, and logos; page loads fast and passes accessibility/performance checks.
+
+## Day 7 — About Page (2025-08-20)
+
+- Built **About Page** at `/about`.
+- Added hero section with mission statement:
+  “Practical AI + Modern Web, delivered fast and responsibly.”
+- Added **Founder Note** card describing the company’s purpose and philosophy.
+- Created **Core Values Grid** with 4 pillars:
+  1. Practical AI
+  2. Speed & Accessibility
+  3. Transparency
+  4. Trust
+- Added **Standards Ribbon**: Core Web Vitals, WCAG 2.2 AA, NIST AI RMF.
+- Verified responsive layout, accessibility, and clean animations.
+- Deployed successfully to Vercel.
+
+**DoD:** Visitors can understand mission, founder’s vision, and values; trust standards are visible; page loads fast and passes accessibility/performance checks.
+
+## Day 8 — Legal & Compliance Pages (2025-08-21)
+
+- Created **AI Policy page** at `/ai-policy`.
+  - Sections: Transparency, Responsible Use, Privacy.
+- Built **Accessibility page** at `/accessibility`.
+  - Sections: Standards (WCAG 2.2 AA), Testing, Feedback channel.
+- Added **Privacy Policy page** at `/privacy`.
+  - Sections: Data collected, How we use data, User rights.
+- Linked all three pages in the global footer (AI Policy, Accessibility, Privacy).
+- Verified responsive layout, accessibility, and performance.
+- Deployed to Vercel.
+
+**DoD:** Footer links resolve; all compliance pages exist, are accessible, and explain policies in plain language.
+
+## Day 9 — Polish & Trust Enhancements (2025-08-21)
+
+- Expanded **layout.tsx metadata** with SEO titles, descriptions, keywords.
+- Added **Open Graph & Twitter card config** (social preview image at `/og-image.png`).
+- Linked **favicon.ico** in `public/` for brand polish.
+- Updated **About Page**:
+  - Added **Demo Bot placeholder** (heading, subtext, disabled input box).
+  - Positioned below Standards Ribbon.
+  - Styled with Framer Motion animations for consistency.
+- Verified previews render correctly on Vercel and favicon shows in tab.
+- Site remains accessible, responsive, and performant.
+
+**DoD:** Metadata + social previews working, favicon in place, and Demo Bot placeholder integrated on About Page.
