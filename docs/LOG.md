@@ -106,3 +106,32 @@
 - Site remains accessible, responsive, and performant.
 
 **DoD:** Metadata + social previews working, favicon in place, and Demo Bot placeholder integrated on About Page.
+
+## Day X — Navbar & Motion Enhancements
+
+### ✅ What we did today
+
+- Improved **floating logo** with smooth up–down motion (4s loop).
+- Fixed **Bento Grid** animations → left cards slide from left, right from right, center from bottom.
+- Enhanced **hover glow + lift** effect on Bento cards (faster, snappier response).
+- Upgraded **navbar** with:
+  - Crisp logo rendering (no blurriness at smaller sizes).
+  - Gradient brand text for "Maryam Tech" aligned with theme.
+  - Futuristic animations (underline reveal, glow on hover).
+  - Mobile responsiveness improvements (hamburger menu and smooth slide-in drawer).
+- Fixed **navbar layout issue** at mid-screen breakpoints (logo + CTA alignment).
+- Synced navbar visuals with global theme (violet gradients, brand glow).
+
+### 🎨 Visual Outcome
+
+- Navbar now feels **royal, futuristic, elegant**.
+- Logo is sharp and motion feels smooth.
+- User experience polished across **desktop + mobile**.
+
+### 📌 Next Steps
+
+- Refine CTA button styles to stand out more on dark backgrounds.
+- Add subtle **scroll-based animation** for navbar (e.g., shrink on scroll).
+- Begin preparing documentation updates for README.
+
+---

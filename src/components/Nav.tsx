@@ -1,15 +1,72 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useEffect, useContext, useRef } from "react";
 import Image from "next/image";
 import { CALENDLY_URL } from "@/lib/constants";
 import { motion, AnimatePresence } from "framer-motion";
+import { TransitionContext } from "@/components/TransitionProvider"; // ✅ global context
+
+import { Orbitron } from "next/font/google";
+const orbitron = Orbitron({ subsets: ["latin"], weight: ["600", "700"] });
+
+// Tiny particle used for title discharge + hover sparks
+function Particle() {
+  const randomX = (Math.random() - 0.5) * 40;
+  const randomY = -10 - Math.random() * 20;
+  const randomSize = 1 + Math.random() * 1.5;
+  const colors = ["bg-purple-400", "bg-violet-300", "bg-cyan-300", "bg-white"];
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  return (
+    <motion.span
+      className={`absolute rounded-full ${color}`}
+      style={{
+        width: randomSize,
+        height: randomSize,
+        left: `${Math.random() * 100}%`,
+        top: "50%",
+      }}
+      initial={{ opacity: 0.8, scale: 1, y: 0, x: 0 }}
+      animate={{ opacity: 0, y: randomY, x: randomX, scale: 0.3 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+    />
+  );
+}
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+  const [particles, setParticles] = useState<{ id: number; createdAt: number }[]>([]);
+  const brandRef = useRef<HTMLButtonElement>(null);
 
-  const links = [
+  const transitionCtx = useContext(TransitionContext);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // continuous discharge on brand title
+  useEffect(() => {
+    const id = setInterval(() => {
+      setParticles((prev) => [
+        ...prev,
+        { id: Date.now() + Math.random(), createdAt: Date.now() },
+      ]);
+    }, 150);
+    return () => clearInterval(id);
+  }, []);
+
+  // clean old particles
+  useEffect(() => {
+    const id = setInterval(() => {
+      setParticles((prev) => prev.filter((p) => Date.now() - p.createdAt < 1200));
+    }, 500);
+    return () => clearInterval(id);
+  }, []);
+
+  const links: [string, string][] = [
     ["AI Services", "/ai-services"],
     ["Websites & Apps", "/websites-apps"],
     ["AI Academy", "/academy"],
@@ -19,68 +76,107 @@ export default function Nav() {
     ["Contact", "/contact"],
   ];
 
-  return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-gradient-to-r from-brand-900/95 via-brand-800/95 to-brand-700/95 backdrop-blur-xl shadow-lg shadow-brand-900/40">
-      <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-        {/* Logo with glow */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <motion.div
-            animate={{ scale: [1, 1.08, 1] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="relative"
-          >
-            <Image
-              src="/logo.svg"
-              alt="Maryam Tech Logo"
-              width={42}
-              height={42}
-              priority
-              className="drop-shadow-[0_0_12px_rgba(106,79,203,0.6)]"
-            />
-          </motion.div>
-          <span className="font-bold text-lg tracking-tight text-white group-hover:text-brand-200 transition-colors duration-300">
-            Maryam Tech
-          </span>
-        </Link>
+  // get logo center (for all transitions)
+  const getLogoOrigin = () => {
+    const rect = brandRef.current?.getBoundingClientRect();
+    return rect ? { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 } : undefined;
+  };
 
-        {/* Desktop Nav (visible on lg and above) */}
-        <nav className="hidden lg:flex gap-8 text-sm font-medium items-center">
+  return (
+    <header
+      className={`sticky top-0 z-50 border-b border-white/10 backdrop-blur-2xl shadow-lg transition-all duration-500 ${
+        scrolled
+          ? "py-2 bg-black/80"
+          : "py-4 bg-gradient-to-r from-[#0E0F12]/95 via-[#161033]/95 to-[#0E0F12]/95"
+      }`}
+    >
+      <div className="mx-auto max-w-7xl px-6 flex items-center justify-between relative">
+        {/* Brand — triggers full-page transition */}
+        <button
+          ref={brandRef}
+          onClick={() => transitionCtx?.startTransition("/", getLogoOrigin())}
+          className="flex items-center gap-3 group relative"
+          aria-label="Go to home with cinematic transition"
+        >
+          <Image
+            src="/logo2.png"
+            alt="Maryam Tech Logo"
+            width={56}
+            height={56}
+            priority
+            className="select-none pointer-events-none"
+          />
+          <span
+            className={`${orbitron.className} relative text-xl font-semibold tracking-widest bg-gradient-to-r from-purple-300 via-cyan-200 to-purple-400 bg-clip-text text-transparent`}
+          >
+            Maryam Tech
+            <span className="absolute inset-0 overflow-visible pointer-events-none">
+              {particles.map((p) => (
+                <Particle key={p.id} />
+              ))}
+            </span>
+          </span>
+        </button>
+
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex gap-8 text-sm font-medium items-center relative">
           {links.map(([label, href], i) => (
             <motion.div
               key={href}
               initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.08, duration: 0.4 }}
+              className="relative"
+              onMouseEnter={() => setHoverIndex(i)}
+              onMouseLeave={() => setHoverIndex(null)}
             >
-              <Link
-                href={href}
-                className="relative text-white/80 hover:text-white transition-colors duration-300
-                          after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 
-                          after:bg-gradient-to-r from-brand-200 via-white to-brand-200
-                          after:transition-all after:duration-300 hover:after:w-full"
+              <button
+                onClick={() => transitionCtx?.startTransition(href, getLogoOrigin())}
+                className={`relative text-white/80 hover:text-white transition-colors duration-300 ${
+                  typeof window !== "undefined" && window.location.pathname === href ? "text-white" : ""
+                }`}
               >
                 {label}
-              </Link>
+              </button>
+
+              {/* base line */}
+              <span className="absolute -bottom-2 left-0 w-full h-[2px] bg-purple-900/40" />
+
+              {/* thunder pulse */}
+              {hoverIndex === i && (
+                <motion.span
+                  className="absolute -bottom-2 left-0 h-[2px] w-full bg-gradient-to-r from-violet-500 via-cyan-200 to-violet-500 shadow-[0_0_15px_rgba(180,100,255,0.9)]"
+                  initial={{ opacity: 0, x: "-100%" }}
+                  animate={{ opacity: [0.2, 1, 0.5, 1, 0.3, 1], x: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                />
+              )}
+
+              {/* sparks */}
+              {hoverIndex === i && (
+                <>
+                  <Particle />
+                  <Particle />
+                  <Particle />
+                </>
+              )}
             </motion.div>
           ))}
 
-          {/* CTA inside desktop nav */}
+          {/* CTA (kept as real <a> since it’s external) */}
           <motion.a
             href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{
-              scale: 1.07,
-              boxShadow: "0px 0px 20px rgba(106,79,203,0.6)",
-            }}
-            className="ml-6 rounded-xl px-5 py-2.5 font-semibold text-brand-900 bg-white 
-                       hover:bg-brand-50 hover:shadow-lg transition-all duration-300"
+            whileHover={{ scale: 1.1, boxShadow: "0px 0px 25px rgba(106,79,203,0.9)" }}
+            className="ml-6 relative rounded-xl px-5 py-2.5 font-semibold text-brand-900 bg-white/90 backdrop-blur-lg border border-brand-200/40 overflow-hidden"
           >
             🚀 Book a 15-min Call
           </motion.a>
         </nav>
 
-        {/* Mobile Hamburger (visible on smaller than lg) */}
+        {/* Mobile Hamburger */}
         <button
           className="lg:hidden text-white focus:outline-none"
           onClick={() => setOpen(!open)}
@@ -122,25 +218,26 @@ export default function Nav() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.07 }}
                 >
-                  <Link
-                    href={href}
-                    onClick={() => setOpen(false)}
-                    className="block text-white/90 hover:text-white text-lg relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-brand-200 after:transition-all hover:after:w-full"
+                  <button
+                    onClick={() => {
+                      setOpen(false);
+                      transitionCtx?.startTransition(href, getLogoOrigin());
+                    }}
+                    className={`block text-lg relative text-white/90 hover:text-white ${
+                      typeof window !== "undefined" && window.location.pathname === href ? "text-white" : ""
+                    }`}
                   >
                     {label}
-                  </Link>
+                  </button>
                 </motion.div>
               ))}
 
-              {/* CTA inside mobile drawer */}
+              {/* CTA (external, keep <a>) */}
               <motion.a
                 href={CALENDLY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0px 0px 20px rgba(106,79,203,0.55)",
-                }}
+                whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px rgba(106,79,203,0.55)" }}
                 className="mt-6 rounded-xl px-5 py-3 font-semibold text-brand-900 bg-white hover:bg-brand-50 shadow-md transition"
               >
                 🚀 Book a 15-min Call
