@@ -43,8 +43,9 @@ export default function TransitionProvider({ children }: { children: React.React
   useEffect(() => {
     if (typeof window === "undefined") return;
     let frames = 0;
-    let start = performance.now();
+    const start = performance.now(); // 🔥 FIXED (const instead of let)
     let id = requestAnimationFrame(loop);
+
     function loop(now: number) {
       frames++;
       if (now - start < 200) id = requestAnimationFrame(loop);
