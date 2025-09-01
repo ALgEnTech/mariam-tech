@@ -21,3 +21,12 @@
 ## Monitoring / Follow-ups
 
 - [ ] Audit for any component-level `hover:text-*` classes that could reintroduce color flips.
+
+
+🐞 BUGS.md (Active Issues)
+
+ Slider still has slight flicker on autoplay transitions (to test further).
+
+ Ensure Stethoscope icon exists in lucide-react package (fallback: HeartPulse).
+
+ Need to recheck text contrast on emerald backgrounds (dark mode readability).

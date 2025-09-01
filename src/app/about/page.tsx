@@ -5,107 +5,225 @@ import { motion } from "framer-motion";
 const values = [
   {
     title: "Practical AI",
-    desc: "We focus on useful, outcome-driven AI—not hype. Assistants that book calls, cut admin time, and save staff hours.",
+    desc:
+      "Usefulness first. Assistants and automations that remove busy work and help people serve customers better.",
   },
   {
-    title: "Speed & Accessibility",
-    desc: "Every site we deliver hits Core Web Vitals ‘Good’ and WCAG 2.2 AA accessibility standards.",
+    title: "Speed and Accessibility",
+    desc:
+      "Fast pages that anyone can use. We tune performance and support screen readers and keyboard navigation.",
   },
   {
     title: "Transparency",
-    desc: "We show how AI is used, provide citations for answers, and ensure safe, responsible deployment.",
+    desc:
+      "Clear builds, clear roadmaps, clear handoffs. We explain how things work and where data goes.",
   },
   {
     title: "Trust",
-    desc: "We keep data secure, respect privacy, and deliver consistent results with simple guarantees.",
+    desc:
+      "We protect data, respect privacy, and deliver predictable results with simple guarantees.",
+  },
+];
+
+const timeline = [
+  {
+    year: "2020",
+    title: "Company founded",
+    note:
+      "COVID hit. Work paused across many clients, so we focused on fast builds and reliable service.",
+  },
+  {
+    year: "2021",
+    title: "Early rebuild year",
+    note:
+      "Small wins with local commerce and community sites. Clear patterns: speed, clarity, low maintenance.",
+  },
+  {
+    year: "2022",
+    title: "Design + search refreshes",
+    note:
+      "Modern designs, better search setup, and training teams to manage their own content.",
+  },
+  {
+    year: "2023",
+    title: "Assistants arrive",
+    note:
+      "Lightweight AI for intake and follow-ups. Less wait time for customers, fewer emails for staff.",
+  },
+  {
+    year: "2024",
+    title: "Ready to deploy",
+    note:
+      "Classic Bixby Burger and other builds prepared for launch when clients give the green light.",
+  },
+  {
+    year: "2025",
+    title: "Prototypes for escrow",
+    note:
+      "American Classic Escrow prototype delivered. Proof and demos available on request.",
   },
 ];
 
 export default function AboutPage() {
   return (
-    <section className="py-24 px-6">
-      <div className="max-w-5xl mx-auto">
-        {/* Heading */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
-            About Mariam Tech
+    <section className="py-24 px-8">
+      <div className="max-w-6xl mx-auto">
+        {/* Hero */}
+        <div className="text-center">
+          <h1 className="gradient-heading text-4xl md:text-6xl font-extrabold tracking-tight">
+            About Maryam Tech
           </h1>
-          <p className="text-lg text-muted max-w-2xl mx-auto">
-            Practical AI + Modern Web, delivered fast and responsibly. We help
-            organizations work faster, serve customers better, and tell
-            meaningful stories using automation and design.
+          <p className="mt-6 text-lg md:text-xl text-brand-100 max-w-3xl mx-auto leading-relaxed">
+            We build practical AI and modern web so your team moves faster with less stress.
+            Kind people, careful engineering, and a focus on outcomes. Founded in 2020, tested by COVID,
+            and still here—steady, honest, and ready to help.
           </p>
         </div>
 
-        {/* Founder Note */}
+        {/* Mission Code */}
         <motion.div
-          className="rounded-2xl shadow-lg bg-white dark:bg-neutral-900 p-8 mb-20"
-          initial={{ opacity: 0, y: 20 }}
+          className="mt-12 rounded-2xl bg-white/10 border border-white/10 p-8"
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
         >
-          <h2 className="text-2xl font-bold mb-4">A Note from the Founder</h2>
-          <p className="text-muted mb-4">
-            “We started Mariam Tech with one simple belief: technology should
-            save time, not steal it. Our AI assistants, training, and websites
-            are built to free people from routine work and help them focus on
-            what actually matters—serving clients, growing teams, and building
-            trust.”
+          <h2 className="text-2xl font-bold text-white">Mission Code</h2>
+          <p className="mt-2 text-brand-100">
+            Three promises we bring to every engagement.
           </p>
-          <p className="font-semibold">— Founder, Mariam Tech</p>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="rounded-xl bg-white/5 p-5">
+              <p className="font-semibold text-white">Ship usefulness</p>
+              <p className="mt-2 text-sm text-brand-200">
+                Show real value quickly. Simple wins in week one beat long plans with no progress.
+              </p>
+            </div>
+            <div className="rounded-xl bg-white/5 p-5">
+              <p className="font-semibold text-white">Be transparent</p>
+              <p className="mt-2 text-sm text-brand-200">
+                Clear scope, clear build notes, clear ownership. You keep the keys.
+              </p>
+            </div>
+            <div className="rounded-xl bg-white/5 p-5">
+              <p className="font-semibold text-white">Protect people</p>
+              <p className="mt-2 text-sm text-brand-200">
+                Respect privacy, design for accessibility, and handle data carefully.
+              </p>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Values Grid */}
-        <h2 className="text-3xl font-bold text-center mb-10">Our Core Values</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-          {values.map((v, i) => (
-            <motion.div
-              key={i}
-              className="rounded-xl shadow-md p-6 bg-white dark:bg-neutral-900"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <h3 className="text-xl font-semibold mb-2">{v.title}</h3>
-              <p className="text-muted">{v.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Standards Ribbon */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-muted mb-20">
-          <span className="px-4 py-2 rounded-full bg-neutral-100 dark:bg-neutral-800">
-            Core Web Vitals: Good
-          </span>
-          <span className="px-4 py-2 rounded-full bg-neutral-100 dark:bg-neutral-800">
-            WCAG 2.2 AA Accessibility
-          </span>
-          <span className="px-4 py-2 rounded-full bg-neutral-100 dark:bg-neutral-800">
-            NIST AI Risk Management
-          </span>
-        </div>
-
-        {/* Demo Bot Placeholder */}
+        {/* Founder Card */}
         <motion.div
-          className="text-center rounded-2xl shadow-lg bg-white dark:bg-neutral-900 p-10"
-          initial={{ opacity: 0, y: 20 }}
+          className="mt-12 rounded-2xl bg-white/10 border border-white/10 p-8"
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
         >
-          <h2 className="text-3xl font-bold mb-4">Try Our Demo Bot</h2>
-          <p className="text-lg text-muted mb-6">
-            Coming soon: interact with a Mariam Tech AI assistant and see how it
-            answers questions instantly.
-          </p>
-          <div className="mx-auto max-w-md rounded-xl shadow p-6 bg-neutral-50 dark:bg-neutral-800">
-            <p className="text-sm text-muted mb-2">[Demo Bot Placeholder]</p>
-            <input
-              type="text"
-              placeholder="Type a question..."
-              className="w-full px-4 py-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900"
-              disabled
-            />
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div className="max-w-3xl">
+              <h3 className="text-2xl font-bold text-white">From the founder</h3>
+              <p className="mt-3 text-brand-100">
+                Maryam Tech grew out of a simple belief: technology should serve people.
+                We build with care, we ship with humility, and we earn trust by doing the small things right.
+              </p>
+              <p className="mt-3 italic text-brand-200">
+                “Build with care. Ship with humility. Protect the people who trust you.”
+              </p>
+              <div className="mt-4 text-sm text-brand-200">
+                <div><strong>Robert Mudiappan</strong></div>
+                <div>Electrical Engineer</div>
+                <div>15+ years at AT&amp;T in product and systems engineering</div>
+                <div className="mt-2">
+                  Robert leads with Christian values—service, stewardship, and integrity guide how we work with
+                  clients and teammates.
+                </div>
+              </div>
+            </div>
+            <div className="shrink-0">
+              <span className="inline-block rounded-full bg-purple-500/10 text-purple-300 px-4 py-2 text-sm font-medium">
+                Founded 2020
+              </span>
+            </div>
           </div>
+        </motion.div>
+
+        {/* Timeline */}
+        <div className="mt-14">
+          <h2 className="text-3xl font-bold text-center text-white">Our story at a glance</h2>
+          <p className="mt-3 text-center text-brand-100">
+            Many projects from 2020–2023 were paused or taken offline during the pandemic.
+            We keep artifacts and demos for proof on request.
+          </p>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {timeline.map((t, i) => (
+              <motion.div
+                key={t.year + i}
+                className="rounded-xl bg-white/10 border border-white/10 p-6"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.04 }}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-sm rounded-full bg-white/5 px-3 py-1 text-brand-200">
+                    {t.year}
+                  </span>
+                  <span className="text-xs rounded-full bg-purple-500/10 text-purple-300 px-3 py-1">
+                    {t.title}
+                  </span>
+                </div>
+                <p className="mt-3 text-sm text-brand-100 leading-relaxed">{t.note}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Values */}
+        <div className="mt-14">
+          <h2 className="text-3xl font-bold text-center text-white">Core values</h2>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            {values.map((v, i) => (
+              <motion.div
+                key={v.title}
+                className="rounded-xl bg-white/10 border border-white/10 p-6"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.06 }}
+              >
+                <p className="text-lg font-semibold text-white">{v.title}</p>
+                <p className="mt-2 text-brand-200">{v.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Standards, plain English */}
+        <div className="mt-14 flex flex-wrap justify-center gap-4 text-sm">
+          <span className="px-4 py-2 rounded-full bg-white/10 text-brand-100">
+            Core Web Vitals: pages load fast for real people
+          </span>
+          <span className="px-4 py-2 rounded-full bg-white/10 text-brand-100">
+            Accessibility: works with screen readers and keyboard navigation
+          </span>
+          <span className="px-4 py-2 rounded-full bg-white/10 text-brand-100">
+            Responsible AI: explainable answers and careful data use
+          </span>
+        </div>
+
+        {/* Closing */}
+        <motion.div
+          className="mt-12 rounded-2xl bg-white/10 border border-white/10 p-8 text-center"
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+        >
+          <p className="text-brand-100 max-w-3xl mx-auto">
+            If you want technology that is kind to users and tough on busy work, we would love to help.
+            We keep builds simple, testable, and owned by you. Proof and demos are ready when you are.
+          </p>
+          <a
+            href="https://calendly.com/kevtechwin/30min"
+            className="mt-6 inline-block cta-primary"
+          >
+            🚀 Book a 15-min Call
+          </a>
         </motion.div>
       </div>
     </section>

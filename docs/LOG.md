@@ -145,3 +145,23 @@
 - Refreshed case studies layout: Before/After pills, outcome metric, and testimonial quote.
 - Kept secondary CTAs white with `.no-color-hover` helper.
 - Verified accessibility (contrast, focus ring) and motion smoothness on desktop + mobile.
+
+
+
+Completed Websites & Apps page card slider with 3D effect, autoplay, warm/emerald gradients.
+
+Fixed overlapping animations + blurred background bug in slider.
+
+Adjusted CTA buttons → only one block at bottom (Book a Strategy Call + Explore Pricing).
+
+Began 10X AI Academy page:
+
+Removed hyphens (per branding rule).
+
+Defined 5 key personas: Professional Services, B2B SaaS Sales, Healthcare Ops, Ecommerce, Financial Services.
+
+Added tailored Benefits, Toolkits, Learning Runway, Delivery, and Week One Changes per persona.
+
+Clean copy with professional tone.
+
+CTA section finalized at bottom.
