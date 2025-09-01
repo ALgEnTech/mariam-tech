@@ -8,7 +8,7 @@ type SectionProps = {
   children?: React.ReactNode;
 };
 
-const Section = ({ id, title, children }: SectionProps): JSX.Element => (
+const Section: React.FC<SectionProps> = ({ id, title, children }) => (
   <section id={id} className="mb-8 scroll-mt-20">
     <h2 className="text-2xl md:text-3xl font-semibold mb-3">{title}</h2>
     <div className="prose prose-sm md:prose-base dark:prose-invert text-gray-200">
