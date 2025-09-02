@@ -245,7 +245,7 @@ export default function Nav() {
                 whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px rgba(106,79,203,0.55)" }}
                 className="mt-6 rounded-xl px-5 py-3 font-semibold text-brand-900 bg-white hover:bg-brand-50 shadow-md transition"
               >
-                🚀 Book a 15-min Call
+                🚀 Book Appointment 
               </motion.a>
             </div>
           </motion.div>
