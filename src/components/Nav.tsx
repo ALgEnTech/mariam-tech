@@ -102,7 +102,7 @@ export default function Nav() {
           aria-label="Go to home with cinematic transition"
         >
           <Image
-            src="/logo2.png"
+            src="/LOGO2.png"
             alt="Maryam Tech Logo"
             width={56}
             height={56}
