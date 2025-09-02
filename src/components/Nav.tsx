@@ -177,7 +177,7 @@ export default function Nav() {
              text-white bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 
              shadow-lg transition"
           >
-            🚀 Book a 15-min Call
+            🚀 Book 15-min Appointment 
           </motion.a>
         </nav>
 
