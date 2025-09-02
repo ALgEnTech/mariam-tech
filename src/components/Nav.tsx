@@ -69,13 +69,14 @@ export default function Nav() {
   }, []);
 
   // ✅ removed "Case Studies" from links
-  const links: [string, string][] = [
-    ["AI Services", "/ai-services"],
-    ["Websites & Apps", "/websites-apps"],
-    ["AI Academy", "/academy"],
-    ["Pricing", "/pricing"],
-    ["About", "/about"],
-    ["Contact", "/contact"],
+  type LinkItem = { label: string; href: string };
+  const links: LinkItem[] = [
+    { label: "AI Services", href: "/ai-services" },
+    { label: "Websites & Apps", href: "/websites-apps" },
+    { label: "AI Academy", href: "/academy" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ];
 
   // get logo center (for all transitions)
@@ -122,7 +123,7 @@ export default function Nav() {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex gap-8 text-sm font-medium items-center relative">
-          {links.map(([label, href], i) => (
+          {links.map(({ label, href }, i) => (
             <motion.div
               key={href}
               initial={{ opacity: 0, y: -15 }}
@@ -143,8 +144,8 @@ export default function Nav() {
 
               {/* base line */}
               <span className="absolute -bottom-2 left-0 w-full h-[2px] bg-purple-900/40" />
-
-              {/* thunder pulse */}
+            
+                          {/* thunder pulse */}
               {hoverIndex === i && (
                 <motion.span
                   className="absolute -bottom-2 left-0 h-[2px] w-full bg-gradient-to-r from-violet-500 via-cyan-200 to-violet-500 shadow-[0_0_15px_rgba(180,100,255,0.9)]"
@@ -215,7 +216,7 @@ export default function Nav() {
             className="fixed inset-y-0 right-0 w-72 bg-gradient-to-b from-brand-900 via-brand-800 to-brand-700 shadow-2xl p-6 z-40 lg:hidden"
           >
             <div className="flex flex-col gap-6 mt-10">
-              {links.map(([label, href], i) => (
+              {links.map(({ label, href }, i) => (
                 <motion.div
                   key={href}
                   initial={{ opacity: 0, x: 40 }}

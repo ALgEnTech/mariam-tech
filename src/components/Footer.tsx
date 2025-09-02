@@ -92,8 +92,7 @@ export default function Footer() {
         <nav className="flex flex-wrap gap-8 text-sm">
           <FooterLink href="/ai-services" label="AI Services" />
           <FooterLink href="/pricing" label="Pricing" />
-          <FooterLink href="/case-studies" label="Case Studies" />
-          <FooterLink href="/about" label="About" />
+                  <FooterLink href="/about" label="About" />
         </nav>
 
         {/* Policies */}

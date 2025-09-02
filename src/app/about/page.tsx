@@ -30,37 +30,37 @@ const timeline = [
     year: "2020",
     title: "Company founded",
     note:
-      "COVID hit. Work paused across many clients, so we focused on fast builds and reliable service.",
+      "A small team formed around a shared idea to build practical digital tools that help people work better.",
   },
   {
     year: "2021",
     title: "Early rebuild year",
     note:
-      "Small wins with local commerce and community sites. Clear patterns: speed, clarity, low maintenance.",
+      "We learned how to ship useful features fast and built repeatable patterns for quality and clarity.",
   },
   {
     year: "2022",
-    title: "Design + search refreshes",
+    title: "Design and search refreshes",
     note:
-      "Modern designs, better search setup, and training teams to manage their own content.",
+      "Design systems and search improvements made content easier to manage and find for real users.",
   },
   {
     year: "2023",
-    title: "Assistants arrive",
+    title: "Automation and assistants",
     note:
-      "Lightweight AI for intake and follow-ups. Less wait time for customers, fewer emails for staff.",
+      "Lightweight automation reduced friction for customers and lowered load on internal teams.",
   },
   {
     year: "2024",
     title: "Ready to deploy",
     note:
-      "Classic Bixby Burger and other builds prepared for launch when clients give the green light.",
+      "Polished builds and production ready demos available for new clients and partners.",
   },
   {
     year: "2025",
-    title: "Prototypes for escrow",
+    title: "Prototypes delivered",
     note:
-      "American Classic Escrow prototype delivered. Proof and demos available on request.",
+      "Specialized prototypes and demos completed to show practical application and value.",
   },
 ];
 
@@ -75,8 +75,8 @@ export default function AboutPage() {
           </h1>
           <p className="mt-6 text-lg md:text-xl text-brand-100 max-w-3xl mx-auto leading-relaxed">
             We build practical AI and modern web so your team moves faster with less stress.
-            Kind people, careful engineering, and a focus on outcomes. Founded in 2020, tested by COVID,
-            and still here—steady, honest, and ready to help.
+            Kind people, careful engineering, and a focus on outcomes. Founded in 2020, tested by the pandemic,
+            and still here steady honest and ready to help.
           </p>
         </div>
 
@@ -112,7 +112,7 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Founder Card */}
+        {/* Mission statement */}
         <motion.div
           className="mt-12 rounded-2xl bg-white/10 border border-white/10 p-8"
           initial={{ opacity: 0, y: 10 }}
@@ -120,23 +120,10 @@ export default function AboutPage() {
         >
           <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div className="max-w-3xl">
-              <h3 className="text-2xl font-bold text-white">From the founder</h3>
-              <p className="mt-3 text-brand-100">
-                Maryam Tech grew out of a simple belief: technology should serve people.
-                We build with care, we ship with humility, and we earn trust by doing the small things right.
+              <h3 className="text-2xl font-bold text-white">Mission statement</h3>
+              <p className="mt-3 text-brand-100 italic">
+                Build with care. Ship with humility. Protect the people who trust you.
               </p>
-              <p className="mt-3 italic text-brand-200">
-                “Build with care. Ship with humility. Protect the people who trust you.”
-              </p>
-              <div className="mt-4 text-sm text-brand-200">
-                <div><strong>Robert Mudiappan</strong></div>
-                <div>Electrical Engineer</div>
-                <div>15+ years at AT&amp;T in product and systems engineering</div>
-                <div className="mt-2">
-                  Robert leads with Christian values—service, stewardship, and integrity guide how we work with
-                  clients and teammates.
-                </div>
-              </div>
             </div>
             <div className="shrink-0">
               <span className="inline-block rounded-full bg-purple-500/10 text-purple-300 px-4 py-2 text-sm font-medium">
@@ -149,9 +136,10 @@ export default function AboutPage() {
         {/* Timeline */}
         <div className="mt-14">
           <h2 className="text-3xl font-bold text-center text-white">Our story at a glance</h2>
-          <p className="mt-3 text-center text-brand-100">
-            Many projects from 2020–2023 were paused or taken offline during the pandemic.
-            We keep artifacts and demos for proof on request.
+          <p className="mt-3 text-center text-brand-100 max-w-3xl mx-auto">
+            We started with a clear vision and a small team. Over the years we refined our craft, focused on
+            practical results, and built processes that help our clients move faster. Today we create
+            tools that reduce busy work and help teams deliver better outcomes.
           </p>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
             {timeline.map((t, i) => (
@@ -222,7 +210,7 @@ export default function AboutPage() {
             href="https://calendly.com/kevtechwin/30min"
             className="mt-6 inline-block cta-primary"
           >
-            🚀 Book a 15-min Call
+            🚀 Book a 15 minute Call
           </a>
         </motion.div>
       </div>
