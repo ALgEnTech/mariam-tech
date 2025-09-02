@@ -4,7 +4,7 @@ import { useState, useEffect, useContext, useRef } from "react";
 import Image from "next/image";
 import { CALENDLY_URL } from "@/lib/constants";
 import { motion, AnimatePresence } from "framer-motion";
-import { TransitionContext } from "@/components/TransitionProvider"; 
+import { TransitionContext } from "@/components/TransitionProvider";
 import { Orbitron } from "next/font/google";
 import { usePathname } from "next/navigation"; // ✅ hydration-safe
 
@@ -68,12 +68,12 @@ export default function Nav() {
     return () => clearInterval(id);
   }, []);
 
+  // ✅ removed "Case Studies" from links
   const links: [string, string][] = [
     ["AI Services", "/ai-services"],
     ["Websites & Apps", "/websites-apps"],
     ["AI Academy", "/academy"],
     ["Pricing", "/pricing"],
-    ["Case Studies", "/case-studies"],
     ["About", "/about"],
     ["Contact", "/contact"],
   ];
