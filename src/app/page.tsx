@@ -65,7 +65,7 @@ export default function Home() {
             className="cta-primary"
             whileTap={{ scale: 0.98 }}
           >
-            🚀 Book a 15-min Call
+            🚀 Book a 15-min Appointment
           </motion.a>
 
           {/* Secondary CTA — keep white on hover too */}
